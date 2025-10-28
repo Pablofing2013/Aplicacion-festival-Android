@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Festival</string>
+    <string name="total_price">Total: $%1$.2f</string>
+    <string name="change">Vuelto: $%1$.2f</string>
+    <string name="item_price">$%1$.2f</string>
+    <string name="default_change">Vuelto: $0.00</string>
+</resources>
