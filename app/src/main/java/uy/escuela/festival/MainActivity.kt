@@ -4,19 +4,19 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var itemsRecyclerView: RecyclerView
     private lateinit var totalPriceTextView: TextView
-    private lateinit var receivedMoneyEditText: EditText
+    private lateinit var receivedMoneyEditText: TextInputEditText
     private lateinit var calculateChangeButton: Button
     private lateinit var resetButton: Button
     private lateinit var changeTextView: TextView
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         addProductButton = findViewById(R.id.addProductButton)
 
         itemsRecyclerView.layoutManager = LinearLayoutManager(this)
-        itemsRecyclerView.adapter = ItemAdapter(items) { updateTotal() }
+        itemsRecyclerView.adapter = ItemAdapter(items, { updateTotal() }, { deleteItem(it) })
 
         calculateChangeButton.setOnClickListener {
             calculateChange()
@@ -85,7 +85,16 @@ class MainActivity : AppCompatActivity() {
         items.forEach { it.quantity = 0 }
         itemsRecyclerView.adapter?.notifyDataSetChanged()
         updateTotal()
-        receivedMoneyEditText.text.clear()
+        receivedMoneyEditText.text?.clear()
         changeTextView.text = getString(R.string.default_change)
+    }
+
+    private fun deleteItem(item: Item) {
+        val position = items.indexOf(item)
+        if (position != -1) {
+            items.removeAt(position)
+            itemsRecyclerView.adapter?.notifyItemRemoved(position)
+            updateTotal()
+        }
     }
 }

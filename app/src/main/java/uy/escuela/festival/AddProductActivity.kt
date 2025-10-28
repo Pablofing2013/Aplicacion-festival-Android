@@ -4,13 +4,13 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
 
 class AddProductActivity : AppCompatActivity() {
 
-    private lateinit var nameEditText: EditText
-    private lateinit var priceEditText: EditText
+    private lateinit var nameEditText: TextInputEditText
+    private lateinit var priceEditText: TextInputEditText
     private lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {

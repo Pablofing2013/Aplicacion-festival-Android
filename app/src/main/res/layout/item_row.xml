@@ -10,7 +10,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Item Name"
-        android:textSize="18sp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="@id/minusButton"/>
@@ -20,14 +20,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$0.00"
+        android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/itemName" />
 
     <Button
         android:id="@+id/minusButton"
+        style="?attr/materialIconButtonStyle"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:text="-"
+        app:icon="@drawable/ic_remove"
+        app:iconTint="?attr/colorSecondary"
         app:layout_constraintEnd_toStartOf="@id/itemQuantity"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,18 +39,30 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="18sp"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
         app:layout_constraintEnd_toStartOf="@id/plusButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/plusButton"
+        style="?attr/materialIconButtonStyle"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:text="+"
+        app:icon="@drawable/ic_add"
+        app:iconTint="?attr/colorSecondary"
+        app:layout_constraintEnd_toStartOf="@id/deleteButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        style="?attr/materialIconButtonStyle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:icon="@drawable/ic_close"
+        app:iconTint="@color/red_500"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ItemAdapter(
     private val items: List<Item>,
-    private val onQuantityChanged: () -> Unit
+    private val onQuantityChanged: () -> Unit,
+    private val onDeleteClicked: (Item) -> Unit
 ) : RecyclerView.Adapter<ItemAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,6 +37,10 @@ class ItemAdapter(
                 onQuantityChanged()
             }
         }
+
+        holder.deleteButton.setOnClickListener {
+            onDeleteClicked(item)
+        }
     }
 
     override fun getItemCount() = items.size
@@ -46,5 +51,6 @@ class ItemAdapter(
         val itemQuantity: TextView = itemView.findViewById(R.id.itemQuantity)
         val plusButton: Button = itemView.findViewById(R.id.plusButton)
         val minusButton: Button = itemView.findViewById(R.id.minusButton)
+        val deleteButton: Button = itemView.findViewById(R.id.deleteButton)
     }
 }
